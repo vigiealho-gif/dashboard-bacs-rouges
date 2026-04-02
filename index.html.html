@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Bacs Rouges — Myopla — Mars 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',system-ui,sans-serif;background:#F0F2F5;color:#1C1C2E;min-height:100vh;display:flex;font-size:13px;}
+.sb{width:195px;flex-shrink:0;background:#fff;border-right:1px solid #E8EAED;display:flex;flex-direction:column;position:fixed;top:0;bottom:0;left:0;z-index:100;}
+.sb-brand{display:flex;align-items:center;gap:10px;padding:16px 14px 12px;border-bottom:1px solid #E8EAED;}
+.sb-hex{width:30px;height:30px;background:#E53935;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:11px;flex-shrink:0;}
+.sb-nm{font-size:12px;font-weight:700;color:#1C1C2E;line-height:1.3;}
+.sb-nm small{display:block;font-size:9px;font-weight:400;color:#9AA0AC;}
+.sb-meta{padding:8px 12px;font-size:9.5px;color:#6B7280;line-height:1.8;background:#FAFAFA;border-bottom:1px solid #E8EAED;}
+.sb-meta strong{color:#374151;}
+.sb-sec{font-size:8.5px;font-weight:700;letter-spacing:1px;color:#9AA0AC;text-transform:uppercase;padding:12px 14px 4px;}
+.nav{display:flex;align-items:center;gap:9px;padding:9px 14px;font-size:12px;font-weight:500;color:#6B7280;cursor:pointer;border-left:3px solid transparent;transition:all .12s;user-select:none;}
+.nav:hover{background:#F7F8FA;color:#1C1C2E;}
+.nav.on{color:#1A73E8;background:#EEF4FE;border-left-color:#1A73E8;font-weight:600;}
+.sb-foot{margin-top:auto;padding:10px 12px;border-top:1px solid #E8EAED;font-size:9px;color:#9AA0AC;line-height:1.7;}
+.main{margin-left:195px;flex:1;display:flex;flex-direction:column;min-width:0;}
+.topbar{background:#fff;border-bottom:1px solid #E8EAED;padding:0 22px;height:50px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+.tb-t{font-size:14px;font-weight:700;color:#1C1C2E;display:flex;align-items:center;gap:8px;}
+.tb-r{display:flex;align-items:center;gap:7px;}
+.chip{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:20px;font-size:10.5px;font-weight:600;}
+.c-g{background:#E6F4EA;color:#137333;} .c-b{background:#EEF4FE;color:#1A73E8;} .c-r{background:#FCE8E6;color:#C5221F;}
+.dot{width:7px;height:7px;background:#34A853;border-radius:50%;animation:blink 2s infinite;flex-shrink:0;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.page{display:none;padding:18px 22px;}
+.page.on{display:block;}
+/* SITE CARDS */
+.site-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.sc{background:#fff;border-radius:10px;padding:14px 16px;border:1px solid #E8EAED;}
+.sc-alh{border-top:3px solid #1A73E8;}
+.sc-tet{border-top:3px solid #F9AB00;}
+.sc-h{display:flex;align-items:center;gap:7px;margin-bottom:10px;}
+.sc-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.sc-title{font-size:12.5px;font-weight:700;} .sc-sub{font-size:9.5px;color:#9AA0AC;margin-top:1px;}
+.sc-stats{display:flex;gap:16px;flex-wrap:wrap;}
+.sv{font-size:17px;font-weight:800;line-height:1;} .sl{font-size:9px;color:#9AA0AC;margin-top:2px;font-weight:500;}
+/* KPI */
+.kr{display:grid;grid-template-columns:repeat(5,1fr);gap:11px;margin-bottom:15px;}
+.kc{background:#fff;border-radius:9px;padding:13px 14px;border:1px solid #E8EAED;}
+.kl{font-size:9.5px;font-weight:600;color:#6B7280;text-transform:uppercase;letter-spacing:.4px;margin-bottom:5px;}
+.kv{font-size:24px;font-weight:800;line-height:1;color:#1C1C2E;}
+.ks{font-size:9px;color:#9AA0AC;margin-top:3px;}
+.kc.blue .kv{color:#1A73E8;} .kc.red .kv{color:#C5221F;} .kc.green .kv{color:#137333;}
+.kc.amber .kv{color:#E37400;} .kc.purple .kv{color:#6A0DAD;}
+/* CARDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px;}
+.card{background:#fff;border-radius:10px;border:1px solid #E8EAED;padding:15px;margin-bottom:14px;}
+.card:last-child{margin-bottom:0;}
+.ct{font-size:11px;font-weight:700;color:#374151;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.ct .bar{width:3px;height:13px;border-radius:2px;flex-shrink:0;}
+.bl{background:#1A73E8;} .ba{background:#F9AB00;} .bg{background:#1E8E3E;} .br2{background:#E53935;}
+/* TABLE */
+.tc{background:#fff;border-radius:10px;border:1px solid #E8EAED;padding:15px;margin-bottom:14px;overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+thead tr{background:#F7F8FA;}
+th{padding:9px 11px;text-align:left;font-size:9px;font-weight:700;color:#6B7280;text-transform:uppercase;letter-spacing:.4px;border-bottom:1px solid #E8EAED;white-space:nowrap;}
+th.r{text-align:right;}
+tbody tr{border-bottom:1px solid #F3F4F6;}
+tbody tr:last-child{border-bottom:none;}
+tbody tr:hover{background:#F7F8FA;}
+td{padding:9px 11px;} td.r{text-align:right;} td.n{font-variant-numeric:tabular-nums;}
+.tot{background:#F7F8FA!important;border-top:2px solid #E8EAED!important;font-weight:700;}
+.an{font-weight:600;color:#1C1C2E;font-size:12.5px;}
+.al{font-size:9px;color:#9AA0AC;font-family:monospace;margin-top:1px;}
+.badge-alh,.badge-tet{display:inline-block;padding:2px 7px;border-radius:4px;font-size:9.5px;font-weight:700;}
+.badge-alh{background:#EEF4FE;color:#1A73E8;} .badge-tet{background:#FEF3E2;color:#E37400;}
+.pill{display:inline-flex;align-items:center;justify-content:center;padding:2px 9px;border-radius:12px;font-size:11px;font-weight:700;min-width:50px;}
+.pg{background:#E6F4EA;color:#137333;} .py{background:#FEF3E2;color:#E37400;} .pr{background:#FCE8E6;color:#C5221F;}
+.pn{background:#F3F4F6;color:#9AA0AC;font-size:10px;padding:2px 6px;border-radius:10px;}
+.rank{width:21px;height:21px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;}
+.r1{background:#FEF9C3;color:#92400E;border:1px solid #FDE047;} .r2{background:#F3F4F6;color:#6B7280;border:1px solid #D1D5DB;}
+.r3{background:#FEF3E2;color:#92400E;border:1px solid #FCD34D;} .rn{background:#F9FAFB;color:#9AA0AC;border:1px solid #E5E7EB;}
+/* DAILY */
+.dg{display:flex;flex-wrap:wrap;gap:4px;}
+.date-btn{padding:5px 10px;border-radius:6px;font-size:10.5px;font-weight:600;cursor:pointer;border:1px solid #E8EAED;background:#F9FAFB;color:#6B7280;font-family:inherit;transition:all .12s;}
+.date-btn:hover,.date-btn.act{background:#1A73E8;border-color:#1A73E8;color:#fff;}
+.date-btn.br-day{background:#FCE8E6;color:#C5221F;border-color:#F5C6C5;}
+.date-btn.br-day.act{background:#E53935;border-color:#E53935;color:#fff;}
+/* STAT */
+.sr{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #F3F4F6;font-size:12px;}
+.sr:last-child{border-bottom:none;}
+.sl2{color:#6B7280;} .sv2{font-weight:700;color:#1C1C2E;}
+svg{display:block;width:100%;overflow:visible;}
+::-webkit-scrollbar{width:4px;height:4px;} ::-webkit-scrollbar-thumb{background:#E5E7EB;border-radius:2px;}
+</style>
+</head>
+<body>
+
+<aside class="sb">
+  <div class="sb-brand">
+    <div class="sb-hex">BR</div>
+    <div class="sb-nm">Bacs Rouges<small>MYOPLA · AUTO-GÉNÉRÉ</small></div>
+  </div>
+  <div class="sb-meta">
+    <strong>📅 Mars 2026</strong><br>
+    Données au : <strong>31/03/2026</strong><br>
+    Fichier : generer_dashboard.py
+  </div>
+  <div class="sb-sec">Navigation</div>
+  <div class="nav on" onclick="goTo('ov')">📊 Overview</div>
+  <div class="nav" onclick="goTo('us')">📋 Usage BR</div>
+  <div class="nav" onclick="goTo('dj')">📅 Vue Journalière</div>
+  <div class="nav" onclick="goTo('ty')">🔍 Typologies</div>
+  <div class="sb-foot">
+    <strong>🔄 Mise à jour :</strong><br>
+    Ajoutez XLSB + CSV dans<br>
+    le dossier et relancez :<br>
+    <code style="background:#F3F4F6;padding:1px 4px;border-radius:3px;font-size:8px;">python generer_dashboard.py</code>
+  </div>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="tb-t"><div class="dot"></div><span id="tb-t">Overview — Mars 2026</span></div>
+    <div class="tb-r">
+      <span class="chip c-g">✔ Données au 31/03</span>
+      <span class="chip c-b">📅 Mars 2026</span>
+      <span class="chip c-r">🔴 1171 BR</span>
+    </div>
+  </div>
+
+<!-- ═══ OVERVIEW ═══════════════════════════════════════════════ -->
+<div class="page on" id="pg-ov">
+  <div class="site-row">
+    <div class="sc sc-alh">
+      <div class="sc-h"><div class="sc-dot" style="background:#1A73E8;"></div><div><div class="sc-title">Al Hoceima (ALH)</div><div class="sc-sub">5 agents N2ALH</div></div></div>
+      <div class="sc-stats">
+        <div><div class="sv" style="color:#1A73E8;">4,091</div><div class="sl">Appels</div></div>
+        <div><div class="sv" style="color:#C5221F;">69</div><div class="sl">BR</div></div>
+        <div><div class="sv" style="color:#E37400;">1.7%</div><div class="sl">Taux BR</div></div>
+        <div><div class="sv" style="color:#137333;">75.7%</div><div class="sl">SatCli Co.</div></div>
+        <div><div class="sv" style="color:#6A0DAD;">11.9%</div><div class="sl">Réit J+1</div></div>
+      </div>
+    </div>
+    <div class="sc sc-tet">
+      <div class="sc-h"><div class="sc-dot" style="background:#F9AB00;"></div><div><div class="sc-title">Tétouan (TET)</div><div class="sc-sub">10 agents N2TET</div></div></div>
+      <div class="sc-stats">
+        <div><div class="sv" style="color:#F9AB00;">7,092</div><div class="sl">Appels</div></div>
+        <div><div class="sv" style="color:#C5221F;">1102</div><div class="sl">BR</div></div>
+        <div><div class="sv" style="color:#E53935;">15.5%</div><div class="sl">Taux BR</div></div>
+        <div><div class="sv" style="color:#137333;">72.5%</div><div class="sl">SatCli Co.</div></div>
+        <div><div class="sv" style="color:#6A0DAD;">11.1%</div><div class="sl">Réit J+1</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="kr">
+    <div class="kc blue"><div class="kl">Total Appels</div><div class="kv">11,183</div><div class="ks">ALH + TET · Mars 2026</div></div>
+    <div class="kc red"><div class="kl">Total BR</div><div class="kv">1171</div><div class="ks">69 ALH · 1102 TET</div></div>
+    <div class="kc amber"><div class="kl">Taux BR Global</div><div class="kv">10.5%</div><div class="ks">ALH 1.7% · TET 15.5%</div></div>
+    <div class="kc green"><div class="kl">SatCli Co. Moy.</div><div class="kv">73.7%</div><div class="ks">Pondéré par appels</div></div>
+    <div class="kc purple"><div class="kl">Total RBT + GC</div><div class="kv">118K€</div><div class="ks">RBT: 104.1K · GC: 14.2K</div></div>
+  </div>
+  <div class="tc">
+    <div class="ct"><div class="bar bl"></div>Tous les agents — Cumul Mars 2026</div>
+    <table><thead><tr><th>#</th><th>Agent</th><th>Site</th><th class="r">Appels</th><th class="r">BR</th><th class="r">Taux BR</th><th class="r">SatCli Co.</th><th class="r">Réit J+1</th><th class="r">GC €</th><th class="r">RBT €</th></tr></thead>
+    <tbody><tr>
+          <td><span class="rank r1">1</span></td>
+          <td><div class="an">IMANE ATTAOUI</div><div class="al">N2TET_iattaoui</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">1,186</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">243</td>
+          <td class="r"><span class="pill pr">20.5%</span></td>
+          <td class="r"><span class="pill py">76.0%</span></td>
+          <td class="r"><span class="pill py">10.1%</span></td>
+          <td class="r n" style="color:#E37400;">2267.88</td>
+          <td class="r n" style="color:#137333;">25 726.32</td>
+        </tr>
+<tr>
+          <td><span class="rank r2">2</span></td>
+          <td><div class="an">HAMRI Najlae</div><div class="al">N2TET_nhamri</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">996</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">233</td>
+          <td class="r"><span class="pill pr">23.4%</span></td>
+          <td class="r"><span class="pill pg">79.6%</span></td>
+          <td class="r"><span class="pill py">10.3%</span></td>
+          <td class="r n" style="color:#E37400;">3709.36</td>
+          <td class="r n" style="color:#137333;">14 806.63</td>
+        </tr>
+<tr>
+          <td><span class="rank r3">3</span></td>
+          <td><div class="an">Afaf AL ABDELLAOUI</div><div class="al">N2TET_aalabdellaoui</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">576</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">133</td>
+          <td class="r"><span class="pill pr">23.1%</span></td>
+          <td class="r"><span class="pill py">70.1%</span></td>
+          <td class="r"><span class="pill py">10.6%</span></td>
+          <td class="r n" style="color:#E37400;">2009.94</td>
+          <td class="r n" style="color:#137333;">10 605.25</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">4</span></td>
+          <td><div class="an">DJIHAD RABOULI</div><div class="al">N2TET_jrabouli</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">855</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">128</td>
+          <td class="r"><span class="pill py">15.0%</span></td>
+          <td class="r"><span class="pill pr">69.9%</span></td>
+          <td class="r"><span class="pill py">10.7%</span></td>
+          <td class="r n" style="color:#E37400;">1300.89</td>
+          <td class="r n" style="color:#137333;">10 670.30</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">5</span></td>
+          <td><div class="an">Aya KADIRI</div><div class="al">N2TET_akadiri</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">840</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">117</td>
+          <td class="r"><span class="pill py">13.9%</span></td>
+          <td class="r"><span class="pill pg">78.0%</span></td>
+          <td class="r"><span class="pill py">12.6%</span></td>
+          <td class="r n" style="color:#E37400;">1530.00</td>
+          <td class="r n" style="color:#137333;">11 926.25</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">6</span></td>
+          <td><div class="an">Hasnae LAGRINI</div><div class="al">N2TET_hlagrini</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">925</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">114</td>
+          <td class="r"><span class="pill py">12.3%</span></td>
+          <td class="r"><span class="pill pr">61.7%</span></td>
+          <td class="r"><span class="pill py">12.9%</span></td>
+          <td class="r n" style="color:#E37400;">1595.59</td>
+          <td class="r n" style="color:#137333;">14 681.66</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">7</span></td>
+          <td><div class="an">AMAL DOURGALI</div><div class="al">N2TET_adourgali</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">698</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">64</td>
+          <td class="r"><span class="pill pg">9.2%</span></td>
+          <td class="r"><span class="pill py">77.9%</span></td>
+          <td class="r"><span class="pill pg">10.0%</span></td>
+          <td class="r n" style="color:#E37400;">234.99</td>
+          <td class="r n" style="color:#137333;">4 700.02</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">8</span></td>
+          <td><div class="an">Mohamed EL BAKKALI</div><div class="al">N2TET_melbakkali</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">761</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">57</td>
+          <td class="r"><span class="pill pg">7.5%</span></td>
+          <td class="r"><span class="pill pr">62.9%</span></td>
+          <td class="r"><span class="pill py">11.7%</span></td>
+          <td class="r n" style="color:#E37400;">780.75</td>
+          <td class="r n" style="color:#137333;">5 640.30</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">9</span></td>
+          <td><div class="an">Oumaima LAMIRI</div><div class="al">N2ALH_olamiri</div></td>
+          <td><span class="badge-alh">ALH</span></td>
+          <td class="r n">810</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">19</td>
+          <td class="r"><span class="pill py">2.3%</span></td>
+          <td class="r"><span class="pill pg">78.5%</span></td>
+          <td class="r"><span class="pill pg">9.5%</span></td>
+          <td class="r n" style="color:#E37400;">255.00</td>
+          <td class="r n" style="color:#137333;">645.26</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">10</span></td>
+          <td><div class="an">Chaymae NFIHA</div><div class="al">N2ALH_cnfiha</div></td>
+          <td><span class="badge-alh">ALH</span></td>
+          <td class="r n">601</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">16</td>
+          <td class="r"><span class="pill py">2.7%</span></td>
+          <td class="r"><span class="pill py">76.5%</span></td>
+          <td class="r"><span class="pill pr">13.1%</span></td>
+          <td class="r n" style="color:#E37400;">107.98</td>
+          <td class="r n" style="color:#137333;">884.50</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">11</span></td>
+          <td><div class="an">Ayoub Khouna</div><div class="al">N2ALH_akhouna</div></td>
+          <td><span class="badge-alh">ALH</span></td>
+          <td class="r n">864</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">14</td>
+          <td class="r"><span class="pill pg">1.6%</span></td>
+          <td class="r"><span class="pill pg">79.3%</span></td>
+          <td class="r"><span class="pill py">12.3%</span></td>
+          <td class="r n" style="color:#E37400;">100.00</td>
+          <td class="r n" style="color:#137333;">852.96</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">12</span></td>
+          <td><div class="an">Salma KARMAN</div><div class="al">N2ALH_skarman</div></td>
+          <td><span class="badge-alh">ALH</span></td>
+          <td class="r n">954</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">11</td>
+          <td class="r"><span class="pill pg">1.2%</span></td>
+          <td class="r"><span class="pill py">74.7%</span></td>
+          <td class="r"><span class="pill py">11.4%</span></td>
+          <td class="r n" style="color:#E37400;">55.00</td>
+          <td class="r n" style="color:#137333;">1 929.41</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">13</span></td>
+          <td><div class="an">Nada OAOUDA</div><div class="al">N2TET_noaouda</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">159</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">11</td>
+          <td class="r"><span class="pill pg">6.9%</span></td>
+          <td class="r"><span class="pill pg">82.6%</span></td>
+          <td class="r"><span class="pill py">10.7%</span></td>
+          <td class="r n" style="color:#E37400;">139.00</td>
+          <td class="r n" style="color:#137333;">878.66</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">14</span></td>
+          <td><div class="an">Khalid KARROUCH</div><div class="al">N2ALH_kkarrouch</div></td>
+          <td><span class="badge-alh">ALH</span></td>
+          <td class="r n">862</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">9</td>
+          <td class="r"><span class="pill pg">1.0%</span></td>
+          <td class="r"><span class="pill pr">69.9%</span></td>
+          <td class="r"><span class="pill pr">13.6%</span></td>
+          <td class="r n" style="color:#E37400;">125.00</td>
+          <td class="r n" style="color:#137333;">129.99</td>
+        </tr>
+<tr>
+          <td><span class="rank rn">15</span></td>
+          <td><div class="an">Oumaima SKOURI</div><div class="al">N2TET_oskouri</div></td>
+          <td><span class="badge-tet">TET</span></td>
+          <td class="r n">96</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">2</td>
+          <td class="r"><span class="pill pg">2.1%</span></td>
+          <td class="r"><span class="pill py">70.4%</span></td>
+          <td class="r"><span class="pill pr">15.4%</span></td>
+          <td class="r n" style="color:#E37400;">0.00</td>
+          <td class="r n" style="color:#137333;">41.28</td>
+        </tr></tbody></table>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct"><div class="bar bl"></div>Appels vs BR par Site</div><svg viewBox="0 0 460 190" style="width:100%;display:block;">
+<rect x="50" y="8" width="10" height="8" rx="2" fill="#1A73E8"/>
+<text x="64" y="17" font-family="Inter,sans-serif" font-size="9" fill="#6B7280">Appels</text>
+<rect x="150" y="8" width="10" height="8" rx="2" fill="#E53935"/>
+<text x="164" y="17" font-family="Inter,sans-serif" font-size="9" fill="#6B7280">BR</text>
+<line x1="50" y1="155.0" x2="440" y2="155.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="45" y="159.0" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">0</text>
+<line x1="50" y1="123.8" x2="440" y2="123.8" stroke="#F3F4F6" stroke-width="1"/>
+<text x="45" y="127.8" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">2k</text>
+<line x1="50" y1="92.5" x2="440" y2="92.5" stroke="#F3F4F6" stroke-width="1"/>
+<text x="45" y="96.5" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">4k</text>
+<line x1="50" y1="61.2" x2="440" y2="61.2" stroke="#F3F4F6" stroke-width="1"/>
+<text x="45" y="65.2" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">6k</text>
+<line x1="50" y1="30.0" x2="440" y2="30.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="45" y="34.0" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">8k</text>
+<rect x="77.3" y="92.3" width="70.2" height="62.7" rx="3" fill="#1A73E8"/>
+<rect x="149.5" y="153.9" width="70.2" height="1.1" rx="3" fill="#E53935"/>
+<text x="147.5" y="169" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#6B7280">Al Hoceima</text>
+<rect x="272.3" y="46.3" width="70.2" height="108.7" rx="3" fill="#1A73E8"/>
+<rect x="344.5" y="138.1" width="70.2" height="16.9" rx="3" fill="#E53935"/>
+<text x="342.5" y="169" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#6B7280">Tétouan</text>
+</svg></div>
+    <div class="card"><div class="ct"><div class="bar ba"></div>Taux BR par Agent (%)</div><svg viewBox="0 0 460 377" style="width:100%;display:block;">
+<rect x="145" y="10" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="10" width="225.1" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="22" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">iattaoui</text>
+<text x="408" y="22" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">20.5%</text>
+<rect x="145" y="34" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="34" width="257.0" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="46" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">nhamri</text>
+<text x="408" y="46" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">23.4%</text>
+<rect x="145" y="58" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="58" width="13.2" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="70" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">skarman</text>
+<text x="408" y="70" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">1.2%</text>
+<rect x="145" y="82" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="82" width="135.1" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="94" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">hlagrini</text>
+<text x="408" y="94" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">12.3%</text>
+<rect x="145" y="106" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="106" width="17.6" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="118" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">akhouna</text>
+<text x="408" y="118" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">1.6%</text>
+<rect x="145" y="130" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="130" width="11.0" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="142" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">kkarrouch</text>
+<text x="408" y="142" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">1.0%</text>
+<rect x="145" y="154" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="154" width="164.7" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="166" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">jrabouli</text>
+<text x="408" y="166" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">15.0%</text>
+<rect x="145" y="178" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="178" width="152.7" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="190" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">akadiri</text>
+<text x="408" y="190" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">13.9%</text>
+<rect x="145" y="202" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="202" width="25.3" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="214" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">olamiri</text>
+<text x="408" y="214" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">2.3%</text>
+<rect x="145" y="226" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="226" width="82.4" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="238" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">melbakkali</text>
+<text x="408" y="238" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">7.5%</text>
+<rect x="145" y="250" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="250" width="101.0" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="262" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">adourgali</text>
+<text x="408" y="262" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">9.2%</text>
+<rect x="145" y="274" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="274" width="29.7" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="286" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">cnfiha</text>
+<text x="408" y="286" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">2.7%</text>
+<rect x="145" y="298" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="298" width="253.7" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="310" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">aalabdellaoui</text>
+<text x="408" y="310" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">23.1%</text>
+<rect x="145" y="322" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="322" width="75.8" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="334" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">noaouda</text>
+<text x="408" y="334" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">6.9%</text>
+<rect x="145" y="346" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="346" width="23.1" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="358" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">oskouri</text>
+<text x="408" y="358" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">2.1%</text>
+</svg></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct"><div class="bar bg"></div>SatCli Conseiller par Agent (%)</div><svg viewBox="0 0 460 377" style="width:100%;display:block;">
+<rect x="145" y="10" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="10" width="205.0" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="22" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">iattaoui</text>
+<text x="408" y="22" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">76.0%</text>
+<rect x="145" y="34" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="34" width="233.3" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="46" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">nhamri</text>
+<text x="408" y="46" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">79.6%</text>
+<rect x="145" y="58" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="58" width="194.7" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="70" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">skarman</text>
+<text x="408" y="70" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">74.7%</text>
+<rect x="145" y="82" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="82" width="92.2" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="94" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">hlagrini</text>
+<text x="408" y="94" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">61.7%</text>
+<rect x="145" y="106" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="106" width="231.0" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="118" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">akhouna</text>
+<text x="408" y="118" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">79.3%</text>
+<rect x="145" y="130" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="130" width="156.9" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="142" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">kkarrouch</text>
+<text x="408" y="142" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">69.9%</text>
+<rect x="145" y="154" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="154" width="156.9" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="166" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">jrabouli</text>
+<text x="408" y="166" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">69.9%</text>
+<rect x="145" y="178" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="178" width="220.7" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="190" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">akadiri</text>
+<text x="408" y="190" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">78.0%</text>
+<rect x="145" y="202" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="202" width="224.7" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="214" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">olamiri</text>
+<text x="408" y="214" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">78.5%</text>
+<rect x="145" y="226" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="226" width="101.7" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="238" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">melbakkali</text>
+<text x="408" y="238" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">62.9%</text>
+<rect x="145" y="250" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="250" width="219.9" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="262" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">adourgali</text>
+<text x="408" y="262" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">77.9%</text>
+<rect x="145" y="274" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="274" width="208.9" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="286" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">cnfiha</text>
+<text x="408" y="286" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">76.5%</text>
+<rect x="145" y="298" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="298" width="158.5" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="310" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">aalabdellaoui</text>
+<text x="408" y="310" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">70.1%</text>
+<rect x="145" y="322" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="322" width="257.0" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="334" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">noaouda</text>
+<text x="408" y="334" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">82.6%</text>
+<rect x="145" y="346" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="346" width="160.8" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="358" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">oskouri</text>
+<text x="408" y="358" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">70.4%</text>
+</svg></div>
+    <div class="card"><div class="ct"><div class="bar br2"></div>Réitération J+1 par Agent (%)</div><svg viewBox="0 0 460 377" style="width:100%;display:block;">
+<rect x="145" y="10" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="10" width="168.6" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="22" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">iattaoui</text>
+<text x="408" y="22" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">10.1%</text>
+<rect x="145" y="34" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="34" width="171.9" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="46" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">nhamri</text>
+<text x="408" y="46" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">10.3%</text>
+<rect x="145" y="58" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="58" width="190.2" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="70" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">skarman</text>
+<text x="408" y="70" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">11.4%</text>
+<rect x="145" y="82" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="82" width="215.3" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="94" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">hlagrini</text>
+<text x="408" y="94" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">12.9%</text>
+<rect x="145" y="106" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="106" width="205.3" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="118" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">akhouna</text>
+<text x="408" y="118" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">12.3%</text>
+<rect x="145" y="130" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="130" width="227.0" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="142" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">kkarrouch</text>
+<text x="408" y="142" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">13.6%</text>
+<rect x="145" y="154" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="154" width="178.6" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="166" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">jrabouli</text>
+<text x="408" y="166" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">10.7%</text>
+<rect x="145" y="178" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="178" width="210.3" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="190" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">akadiri</text>
+<text x="408" y="190" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">12.6%</text>
+<rect x="145" y="202" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="202" width="158.5" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="214" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">olamiri</text>
+<text x="408" y="214" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">9.5%</text>
+<rect x="145" y="226" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="226" width="195.3" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="238" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">melbakkali</text>
+<text x="408" y="238" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">11.7%</text>
+<rect x="145" y="250" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="250" width="166.9" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="262" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">adourgali</text>
+<text x="408" y="262" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">10.0%</text>
+<rect x="145" y="274" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="274" width="218.6" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="286" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">cnfiha</text>
+<text x="408" y="286" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">13.1%</text>
+<rect x="145" y="298" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="298" width="176.9" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="310" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">aalabdellaoui</text>
+<text x="408" y="310" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">10.6%</text>
+<rect x="145" y="322" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="322" width="178.6" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="334" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">noaouda</text>
+<text x="408" y="334" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">10.7%</text>
+<rect x="145" y="346" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="346" width="257.0" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="358" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">oskouri</text>
+<text x="408" y="358" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">15.4%</text>
+</svg></div>
+  </div>
+</div>
+
+<!-- ═══ USAGE BR ════════════════════════════════════════════════ -->
+<div class="page" id="pg-us">
+  <div class="tc"><div class="ct"><div class="bar bl"></div>Al Hoceima (ALH) — 5 agents N2ALH</div>
+    <table><thead><tr><th>#</th><th>Login</th><th class="r">Appels</th><th class="r">BR</th><th class="r">Taux BR</th><th class="r">GC €</th><th class="r">RBT €</th><th class="r">% RTJ1</th><th class="r">% SatCli Co.</th></tr></thead>
+    <tbody><tr>
+          <td><span class="rank r1">1</span></td>
+          <td><div class="an">Salma KARMAN</div><div class="al">N2ALH_skarman</div></td>
+          <td class="r n">954</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">11</td>
+          <td class="r"><span class="pill pg">1.2%</span></td>
+          <td class="r n" style="color:#E37400;">55.00</td>
+          <td class="r n" style="color:#137333;">1 929.41</td>
+          <td class="r"><span class="pill py">11.4%</span></td>
+          <td class="r"><span class="pill py">74.7%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank r2">2</span></td>
+          <td><div class="an">Ayoub Khouna</div><div class="al">N2ALH_akhouna</div></td>
+          <td class="r n">864</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">14</td>
+          <td class="r"><span class="pill pg">1.6%</span></td>
+          <td class="r n" style="color:#E37400;">100.00</td>
+          <td class="r n" style="color:#137333;">852.96</td>
+          <td class="r"><span class="pill py">12.3%</span></td>
+          <td class="r"><span class="pill pg">79.3%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank r3">3</span></td>
+          <td><div class="an">Khalid KARROUCH</div><div class="al">N2ALH_kkarrouch</div></td>
+          <td class="r n">862</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">9</td>
+          <td class="r"><span class="pill pg">1.0%</span></td>
+          <td class="r n" style="color:#E37400;">125.00</td>
+          <td class="r n" style="color:#137333;">129.99</td>
+          <td class="r"><span class="pill pr">13.6%</span></td>
+          <td class="r"><span class="pill pr">69.9%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank rn">4</span></td>
+          <td><div class="an">Oumaima LAMIRI</div><div class="al">N2ALH_olamiri</div></td>
+          <td class="r n">810</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">19</td>
+          <td class="r"><span class="pill py">2.3%</span></td>
+          <td class="r n" style="color:#E37400;">255.00</td>
+          <td class="r n" style="color:#137333;">645.26</td>
+          <td class="r"><span class="pill pg">9.5%</span></td>
+          <td class="r"><span class="pill pg">78.5%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank rn">5</span></td>
+          <td><div class="an">Chaymae NFIHA</div><div class="al">N2ALH_cnfiha</div></td>
+          <td class="r n">601</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">16</td>
+          <td class="r"><span class="pill py">2.7%</span></td>
+          <td class="r n" style="color:#E37400;">107.98</td>
+          <td class="r n" style="color:#137333;">884.50</td>
+          <td class="r"><span class="pill pr">13.1%</span></td>
+          <td class="r"><span class="pill py">76.5%</span></td>
+        </tr>
+<tr class="tot">
+      <td colspan="2" style="color:#1A73E8;font-weight:700;">TOTAL ALH</td>
+      <td class="r n">4,091</td><td class="r n" style="color:#C5221F;">69</td>
+      <td></td><td class="r n">642.98</td><td class="r n">4 442.12</td><td></td><td></td>
+    </tr></tbody></table>
+  </div>
+  <div class="tc"><div class="ct"><div class="bar ba"></div>Tétouan (TET) — 10 agents N2TET</div>
+    <table><thead><tr><th>#</th><th>Login</th><th class="r">Appels</th><th class="r">BR</th><th class="r">Taux BR</th><th class="r">GC €</th><th class="r">RBT €</th><th class="r">% RTJ1</th><th class="r">% SatCli Co.</th></tr></thead>
+    <tbody><tr>
+          <td><span class="rank r1">1</span></td>
+          <td><div class="an">IMANE ATTAOUI</div><div class="al">N2TET_iattaoui</div></td>
+          <td class="r n">1,186</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">243</td>
+          <td class="r"><span class="pill pr">20.5%</span></td>
+          <td class="r n" style="color:#E37400;">2267.88</td>
+          <td class="r n" style="color:#137333;">25 726.32</td>
+          <td class="r"><span class="pill py">10.1%</span></td>
+          <td class="r"><span class="pill py">76.0%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank r2">2</span></td>
+          <td><div class="an">HAMRI Najlae</div><div class="al">N2TET_nhamri</div></td>
+          <td class="r n">996</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">233</td>
+          <td class="r"><span class="pill pr">23.4%</span></td>
+          <td class="r n" style="color:#E37400;">3709.36</td>
+          <td class="r n" style="color:#137333;">14 806.63</td>
+          <td class="r"><span class="pill py">10.3%</span></td>
+          <td class="r"><span class="pill pg">79.6%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank r3">3</span></td>
+          <td><div class="an">Hasnae LAGRINI</div><div class="al">N2TET_hlagrini</div></td>
+          <td class="r n">925</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">114</td>
+          <td class="r"><span class="pill py">12.3%</span></td>
+          <td class="r n" style="color:#E37400;">1595.59</td>
+          <td class="r n" style="color:#137333;">14 681.66</td>
+          <td class="r"><span class="pill py">12.9%</span></td>
+          <td class="r"><span class="pill pr">61.7%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank rn">4</span></td>
+          <td><div class="an">DJIHAD RABOULI</div><div class="al">N2TET_jrabouli</div></td>
+          <td class="r n">855</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">128</td>
+          <td class="r"><span class="pill py">15.0%</span></td>
+          <td class="r n" style="color:#E37400;">1300.89</td>
+          <td class="r n" style="color:#137333;">10 670.30</td>
+          <td class="r"><span class="pill py">10.7%</span></td>
+          <td class="r"><span class="pill pr">69.9%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank rn">5</span></td>
+          <td><div class="an">Aya KADIRI</div><div class="al">N2TET_akadiri</div></td>
+          <td class="r n">840</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">117</td>
+          <td class="r"><span class="pill py">13.9%</span></td>
+          <td class="r n" style="color:#E37400;">1530.00</td>
+          <td class="r n" style="color:#137333;">11 926.25</td>
+          <td class="r"><span class="pill py">12.6%</span></td>
+          <td class="r"><span class="pill pg">78.0%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank rn">6</span></td>
+          <td><div class="an">Mohamed EL BAKKALI</div><div class="al">N2TET_melbakkali</div></td>
+          <td class="r n">761</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">57</td>
+          <td class="r"><span class="pill pg">7.5%</span></td>
+          <td class="r n" style="color:#E37400;">780.75</td>
+          <td class="r n" style="color:#137333;">5 640.30</td>
+          <td class="r"><span class="pill py">11.7%</span></td>
+          <td class="r"><span class="pill pr">62.9%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank rn">7</span></td>
+          <td><div class="an">AMAL DOURGALI</div><div class="al">N2TET_adourgali</div></td>
+          <td class="r n">698</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">64</td>
+          <td class="r"><span class="pill pg">9.2%</span></td>
+          <td class="r n" style="color:#E37400;">234.99</td>
+          <td class="r n" style="color:#137333;">4 700.02</td>
+          <td class="r"><span class="pill pg">10.0%</span></td>
+          <td class="r"><span class="pill py">77.9%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank rn">8</span></td>
+          <td><div class="an">Afaf AL ABDELLAOUI</div><div class="al">N2TET_aalabdellaoui</div></td>
+          <td class="r n">576</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">133</td>
+          <td class="r"><span class="pill pr">23.1%</span></td>
+          <td class="r n" style="color:#E37400;">2009.94</td>
+          <td class="r n" style="color:#137333;">10 605.25</td>
+          <td class="r"><span class="pill py">10.6%</span></td>
+          <td class="r"><span class="pill py">70.1%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank rn">9</span></td>
+          <td><div class="an">Nada OAOUDA</div><div class="al">N2TET_noaouda</div></td>
+          <td class="r n">159</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">11</td>
+          <td class="r"><span class="pill pg">6.9%</span></td>
+          <td class="r n" style="color:#E37400;">139.00</td>
+          <td class="r n" style="color:#137333;">878.66</td>
+          <td class="r"><span class="pill py">10.7%</span></td>
+          <td class="r"><span class="pill pg">82.6%</span></td>
+        </tr>
+<tr>
+          <td><span class="rank rn">10</span></td>
+          <td><div class="an">Oumaima SKOURI</div><div class="al">N2TET_oskouri</div></td>
+          <td class="r n">96</td>
+          <td class="r n" style="color:#C5221F;font-weight:700;">2</td>
+          <td class="r"><span class="pill pg">2.1%</span></td>
+          <td class="r n" style="color:#E37400;">0.00</td>
+          <td class="r n" style="color:#137333;">41.28</td>
+          <td class="r"><span class="pill pr">15.4%</span></td>
+          <td class="r"><span class="pill py">70.4%</span></td>
+        </tr>
+<tr class="tot">
+      <td colspan="2" style="color:#E37400;font-weight:700;">TOTAL TET</td>
+      <td class="r n">7,092</td><td class="r n" style="color:#C5221F;">1102</td>
+      <td></td><td class="r n">13568.40</td><td class="r n">99 676.67</td><td></td><td></td>
+    </tr></tbody></table>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct"><div class="bar bl"></div>Scatter : SatCli vs Taux BR</div><svg viewBox="0 0 460 250" style="width:100%;display:block;">
+<text x="247.5" y="245" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">SatCli Conseiller (%)</text>
+<line x1="55.0" y1="20" x2="55.0" y2="205" stroke="#F3F4F6" stroke-width="1"/>
+<line x1="55" y1="205.0" x2="440" y2="205.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="55.0" y="218" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">59%</text>
+<text x="50" y="208.0" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">0%</text>
+<line x1="151.2" y1="20" x2="151.2" y2="205" stroke="#F3F4F6" stroke-width="1"/>
+<line x1="55" y1="158.8" x2="440" y2="158.8" stroke="#F3F4F6" stroke-width="1"/>
+<text x="151.2" y="218" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">65%</text>
+<text x="50" y="161.8" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">7%</text>
+<line x1="247.5" y1="20" x2="247.5" y2="205" stroke="#F3F4F6" stroke-width="1"/>
+<line x1="55" y1="112.5" x2="440" y2="112.5" stroke="#F3F4F6" stroke-width="1"/>
+<text x="247.5" y="218" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">72%</text>
+<text x="50" y="115.5" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">14%</text>
+<line x1="343.8" y1="20" x2="343.8" y2="205" stroke="#F3F4F6" stroke-width="1"/>
+<line x1="55" y1="66.2" x2="440" y2="66.2" stroke="#F3F4F6" stroke-width="1"/>
+<text x="343.8" y="218" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">79%</text>
+<text x="50" y="69.2" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">21%</text>
+<line x1="440.0" y1="20" x2="440.0" y2="205" stroke="#F3F4F6" stroke-width="1"/>
+<line x1="55" y1="20.0" x2="440" y2="20.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="440.0" y="218" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">86%</text>
+<text x="50" y="23.0" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="#9AA0AC">28%</text>
+<circle cx="349.8" cy="194.5" r="6" fill="#1A73E8" fill-opacity=".7" stroke="#1A73E8" stroke-width="1.5"/>
+<text x="349.8" y="185.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">akhouna</text>
+<circle cx="309.8" cy="187.2" r="6" fill="#1A73E8" fill-opacity=".7" stroke="#1A73E8" stroke-width="1.5"/>
+<text x="309.8" y="178.2" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">cnfiha</text>
+<circle cx="338.4" cy="189.8" r="6" fill="#1A73E8" fill-opacity=".7" stroke="#1A73E8" stroke-width="1.5"/>
+<text x="338.4" y="180.8" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">olamiri</text>
+<circle cx="215.3" cy="198.4" r="6" fill="#1A73E8" fill-opacity=".7" stroke="#1A73E8" stroke-width="1.5"/>
+<text x="215.3" y="189.4" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">kkarrouch</text>
+<circle cx="284.0" cy="197.1" r="6" fill="#1A73E8" fill-opacity=".7" stroke="#1A73E8" stroke-width="1.5"/>
+<text x="284.0" y="188.1" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">skarman</text>
+<circle cx="302.6" cy="69.9" r="9" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="302.6" y="57.9" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">iattaoui</text>
+<circle cx="354.1" cy="50.8" r="9" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="354.1" y="38.8" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">nhamri</text>
+<circle cx="97.9" cy="124.0" r="6" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="97.9" y="115.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">hlagrini</text>
+<circle cx="331.2" cy="113.4" r="6" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="331.2" y="104.4" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">akadiri</text>
+<circle cx="215.3" cy="106.2" r="6" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="215.3" y="97.2" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">jrabouli</text>
+<circle cx="115.1" cy="155.6" r="6" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="115.1" y="146.6" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">melbakkali</text>
+<circle cx="329.8" cy="144.4" r="6" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="329.8" y="135.4" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">adourgali</text>
+<circle cx="218.2" cy="52.8" r="6" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="218.2" y="43.8" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">aalabdellaoui</text>
+<circle cx="397.1" cy="159.5" r="6" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="397.1" y="150.5" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">noaouda</text>
+<circle cx="222.5" cy="191.2" r="6" fill="#F9AB00" fill-opacity=".7" stroke="#F9AB00" stroke-width="1.5"/>
+<text x="222.5" y="182.2" text-anchor="middle" font-family="Inter,sans-serif" font-size="8.5" fill="#374151" font-weight="600">oskouri</text>
+<circle cx="75" cy="20" r="5" fill="#1A73E8" fill-opacity=".7"/>
+<text x="83" y="24" font-family="Inter,sans-serif" font-size="9" fill="#6B7280">ALH</text>
+<circle cx="125" cy="20" r="5" fill="#F9AB00" fill-opacity=".7"/>
+<text x="133" y="24" font-family="Inter,sans-serif" font-size="9" fill="#6B7280">TET</text>
+</svg></div>
+    <div class="card"><div class="ct"><div class="bar bg"></div>Top RBT par Agent (€)</div><svg viewBox="0 0 460 257" style="width:100%;display:block;">
+<rect x="145" y="10" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="10" width="257.0" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="22" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">iattaoui</text>
+<text x="408" y="22" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">25 726</text>
+<rect x="145" y="34" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="34" width="147.9" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="46" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">nhamri</text>
+<text x="408" y="46" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">14 806</text>
+<rect x="145" y="58" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="58" width="146.7" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="70" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">hlagrini</text>
+<text x="408" y="70" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">14 681</text>
+<rect x="145" y="82" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="82" width="119.1" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="94" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">akadiri</text>
+<text x="408" y="94" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">11 926</text>
+<rect x="145" y="106" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="106" width="106.6" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="118" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">jrabouli</text>
+<text x="408" y="118" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">10 670</text>
+<rect x="145" y="130" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="130" width="105.9" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="142" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">aalabdellaoui</text>
+<text x="408" y="142" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">10 605</text>
+<rect x="145" y="154" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="154" width="56.3" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="166" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">melbakkali</text>
+<text x="408" y="166" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">5 640</text>
+<rect x="145" y="178" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="178" width="47.0" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="190" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">adourgali</text>
+<text x="408" y="190" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">4 700</text>
+<rect x="145" y="202" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="202" width="19.3" height="17" rx="3" fill="#1A73E8"/>
+<text x="138" y="214" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">skarman</text>
+<text x="408" y="214" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">1 929</text>
+<rect x="145" y="226" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="226" width="8.8" height="17" rx="3" fill="#1A73E8"/>
+<text x="138" y="238" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">cnfiha</text>
+<text x="408" y="238" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">884</text>
+</svg></div>
+  </div>
+</div>
+
+<!-- ═══ VUE JOURNALIÈRE ═════════════════════════════════════════ -->
+<div class="page" id="pg-dj">
+  <div class="card"><div class="ct"><div class="bar bl"></div>Sélectionner une date</div>
+    <div class="dg"><button class="date-btn" id="db_01_03" onclick="selDay('01/03')">01/03 mars</button><button class="date-btn" id="db_02_03" onclick="selDay('02/03')">02/03 mars</button><button class="date-btn" id="db_03_03" onclick="selDay('03/03')">03/03 mars</button><button class="date-btn" id="db_04_03" onclick="selDay('04/03')">04/03 mars</button><button class="date-btn" id="db_05_03" onclick="selDay('05/03')">05/03 mars</button><button class="date-btn" id="db_06_03" onclick="selDay('06/03')">06/03 mars</button><button class="date-btn" id="db_07_03" onclick="selDay('07/03')">07/03 mars</button><button class="date-btn" id="db_09_03" onclick="selDay('09/03')">09/03 mars</button><button class="date-btn" id="db_10_03" onclick="selDay('10/03')">10/03 mars</button><button class="date-btn" id="db_11_03" onclick="selDay('11/03')">11/03 mars</button><button class="date-btn" id="db_12_03" onclick="selDay('12/03')">12/03 mars</button><button class="date-btn" id="db_13_03" onclick="selDay('13/03')">13/03 mars</button><button class="date-btn" id="db_14_03" onclick="selDay('14/03')">14/03 mars</button><button class="date-btn" id="db_15_03" onclick="selDay('15/03')">15/03 mars</button><button class="date-btn" id="db_16_03" onclick="selDay('16/03')">16/03 mars</button><button class="date-btn" id="db_17_03" onclick="selDay('17/03')">17/03 mars</button><button class="date-btn" id="db_18_03" onclick="selDay('18/03')">18/03 mars</button><button class="date-btn" id="db_19_03" onclick="selDay('19/03')">19/03 mars</button><button class="date-btn" id="db_20_03" onclick="selDay('20/03')">20/03 mars</button><button class="date-btn" id="db_21_03" onclick="selDay('21/03')">21/03 mars</button><button class="date-btn" id="db_23_03" onclick="selDay('23/03')">23/03 mars</button><button class="date-btn" id="db_24_03" onclick="selDay('24/03')">24/03 mars</button><button class="date-btn br-day" id="db_25_03" onclick="selDay('25/03')">25/03 mars</button><button class="date-btn br-day" id="db_26_03" onclick="selDay('26/03')">26/03 mars</button><button class="date-btn br-day" id="db_27_03" onclick="selDay('27/03')">27/03 mars</button><button class="date-btn br-day" id="db_30_03" onclick="selDay('30/03')">30/03 mars</button><button class="date-btn br-day" id="db_31_03" onclick="selDay('31/03')">31/03 mars</button></div>
+  </div>
+  <div class="kr">
+    <div class="kc blue"><div class="kl">Appels Pris</div><div class="kv" id="dk1">—</div></div>
+    <div class="kc red"><div class="kl">Actions BR</div><div class="kv" id="dk2">—</div></div>
+    <div class="kc amber"><div class="kl">Taux Util.</div><div class="kv" id="dk3">—</div></div>
+    <div class="kc green"><div class="kl">SatCli Co. (J-1)</div><div class="kv" id="dk4">—</div></div>
+    <div class="kc purple"><div class="kl">Réit J+1 (J-2)</div><div class="kv" id="dk5">—</div></div>
+  </div>
+  <div class="g2">
+    <div class="tc" style="margin-bottom:0;">
+      <div class="ct"><div class="bar bl"></div><span id="dj-t">Agents du jour</span></div>
+      <table><thead><tr><th>Agent</th><th class="r">Appels</th><th class="r">BR</th><th class="r">Util%</th><th class="r">SatCli Co.</th><th class="r">Réit J+1</th></tr></thead>
+      <tbody id="dj-b"><tr><td colspan="6" style="text-align:center;padding:22px;color:#9AA0AC;font-style:italic;">← Sélectionnez une date</td></tr></tbody>
+      </table>
+    </div>
+    <div class="card"><div class="ct"><div class="bar bl"></div>Performance du jour</div>
+      <div id="dj-g" style="min-height:150px;display:flex;align-items:center;justify-content:center;color:#9AA0AC;font-size:11px;font-style:italic;">Sélectionnez une date</div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px;"><div class="ct"><div class="bar br2"></div>Évolution des BR — Mars 2026 (Al Hoceima)</div><svg viewBox="0 0 900 150" style="width:100%;display:block;">
+<line x1="35" y1="120.0" x2="885" y2="120.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="31" y="123.0" text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#9AA0AC">0</text>
+<line x1="35" y1="85.0" x2="885" y2="85.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="31" y="88.0" text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#9AA0AC">3</text>
+<line x1="35" y1="50.0" x2="885" y2="50.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="31" y="53.0" text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#9AA0AC">7</text>
+<line x1="35" y1="15.0" x2="885" y2="15.0" stroke="#F3F4F6" stroke-width="1"/>
+<text x="31" y="18.0" text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="#9AA0AC">10</text>
+<text x="35.0" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">01/03</text>
+<text x="100.4" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">03/03</text>
+<text x="165.8" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">05/03</text>
+<text x="231.2" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">07/03</text>
+<text x="296.5" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">10/03</text>
+<text x="361.9" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">12/03</text>
+<text x="427.3" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">14/03</text>
+<text x="492.7" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">16/03</text>
+<text x="558.1" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">18/03</text>
+<text x="623.5" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">20/03</text>
+<text x="688.8" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">23/03</text>
+<text x="754.2" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">25/03</text>
+<text x="819.6" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">27/03</text>
+<text x="885.0" y="131" text-anchor="middle" font-family="Inter,sans-serif" font-size="7.5" fill="#9AA0AC">31/03</text>
+<path d="M35.0,120.0L67.7,120.0L100.4,120.0L133.1,120.0L165.8,120.0L198.5,120.0M263.8,120.0L296.5,120.0L329.2,120.0L361.9,120.0L394.6,120.0M460.0,120.0L492.7,120.0L525.4,120.0L558.1,120.0L590.8,120.0L623.5,120.0M688.8,120.0L721.5,120.0L754.2,100.6L786.9,100.6L819.6,100.6L852.3,71.4L885.0,90.8" fill="none" stroke="#1A73E8" stroke-width="1.8" stroke-linejoin="round"/>
+<circle cx="35.0" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="67.7" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="100.4" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="133.1" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="165.8" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="198.5" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="263.8" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="296.5" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="329.2" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="361.9" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="394.6" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="460.0" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="492.7" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="525.4" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="558.1" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="590.8" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="623.5" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="688.8" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="721.5" cy="120.0" r="2.5" fill="#1A73E8"/>
+<circle cx="754.2" cy="100.6" r="2.5" fill="#1A73E8"/>
+<circle cx="786.9" cy="100.6" r="2.5" fill="#1A73E8"/>
+<circle cx="819.6" cy="100.6" r="2.5" fill="#1A73E8"/>
+<circle cx="852.3" cy="71.4" r="2.5" fill="#1A73E8"/>
+<circle cx="885.0" cy="90.8" r="2.5" fill="#1A73E8"/>
+<path d="M263.8,120.0L296.5,120.0L329.2,120.0L361.9,120.0L394.6,120.0M460.0,120.0L492.7,120.0L525.4,120.0L558.1,120.0L590.8,120.0L623.5,120.0M688.8,120.0L721.5,120.0L754.2,110.3L786.9,100.6L819.6,110.3L852.3,51.9L885.0,71.4" fill="none" stroke="#F9AB00" stroke-width="1.8" stroke-linejoin="round"/>
+<circle cx="263.8" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="296.5" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="329.2" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="361.9" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="394.6" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="460.0" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="492.7" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="525.4" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="558.1" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="590.8" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="623.5" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="688.8" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="721.5" cy="120.0" r="2.5" fill="#F9AB00"/>
+<circle cx="754.2" cy="110.3" r="2.5" fill="#F9AB00"/>
+<circle cx="786.9" cy="100.6" r="2.5" fill="#F9AB00"/>
+<circle cx="819.6" cy="110.3" r="2.5" fill="#F9AB00"/>
+<circle cx="852.3" cy="51.9" r="2.5" fill="#F9AB00"/>
+<circle cx="885.0" cy="71.4" r="2.5" fill="#F9AB00"/>
+<path d="M67.7,120.0L100.4,120.0L133.1,120.0L165.8,120.0L198.5,120.0L231.2,120.0L263.8,120.0L296.5,120.0L329.2,120.0M394.6,120.0L427.3,120.0M492.7,120.0L525.4,120.0L558.1,120.0L590.8,120.0L623.5,120.0L656.2,120.0L688.8,120.0L721.5,120.0L754.2,120.0L786.9,110.3L819.6,110.3L852.3,42.2L885.0,32.5" fill="none" stroke="#1E8E3E" stroke-width="1.8" stroke-linejoin="round"/>
+<circle cx="67.7" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="100.4" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="133.1" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="165.8" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="198.5" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="231.2" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="263.8" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="296.5" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="329.2" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="394.6" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="427.3" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="492.7" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="525.4" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="558.1" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="590.8" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="623.5" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="656.2" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="688.8" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="721.5" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="754.2" cy="120.0" r="2.5" fill="#1E8E3E"/>
+<circle cx="786.9" cy="110.3" r="2.5" fill="#1E8E3E"/>
+<circle cx="819.6" cy="110.3" r="2.5" fill="#1E8E3E"/>
+<circle cx="852.3" cy="42.2" r="2.5" fill="#1E8E3E"/>
+<circle cx="885.0" cy="32.5" r="2.5" fill="#1E8E3E"/>
+<path d="M67.7,120.0L100.4,120.0L133.1,120.0L165.8,120.0L198.5,120.0L231.2,120.0L263.8,120.0L296.5,120.0M361.9,120.0L394.6,120.0M460.0,120.0L492.7,120.0L525.4,120.0L558.1,120.0L590.8,120.0L623.5,120.0L656.2,120.0L688.8,120.0L721.5,120.0L754.2,120.0L786.9,120.0L819.6,110.3L852.3,51.9L885.0,110.3" fill="none" stroke="#E53935" stroke-width="1.8" stroke-linejoin="round"/>
+<circle cx="67.7" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="100.4" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="133.1" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="165.8" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="198.5" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="231.2" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="263.8" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="296.5" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="361.9" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="394.6" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="460.0" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="492.7" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="525.4" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="558.1" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="590.8" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="623.5" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="656.2" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="688.8" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="721.5" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="754.2" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="786.9" cy="120.0" r="2.5" fill="#E53935"/>
+<circle cx="819.6" cy="110.3" r="2.5" fill="#E53935"/>
+<circle cx="852.3" cy="51.9" r="2.5" fill="#E53935"/>
+<circle cx="885.0" cy="110.3" r="2.5" fill="#E53935"/>
+<path d="M67.7,120.0L100.4,120.0L133.1,120.0L165.8,120.0L198.5,120.0M263.8,120.0L296.5,120.0L329.2,120.0L361.9,120.0L394.6,120.0M460.0,120.0L492.7,120.0L525.4,120.0L558.1,120.0L590.8,120.0L623.5,120.0M688.8,120.0L721.5,120.0L754.2,110.3L786.9,110.3L819.6,100.6L852.3,90.8L885.0,81.1" fill="none" stroke="#7B1FA2" stroke-width="1.8" stroke-linejoin="round"/>
+<circle cx="67.7" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="100.4" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="133.1" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="165.8" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="198.5" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="263.8" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="296.5" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="329.2" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="361.9" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="394.6" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="460.0" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="492.7" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="525.4" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="558.1" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="590.8" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="623.5" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="688.8" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="721.5" cy="120.0" r="2.5" fill="#7B1FA2"/>
+<circle cx="754.2" cy="110.3" r="2.5" fill="#7B1FA2"/>
+<circle cx="786.9" cy="110.3" r="2.5" fill="#7B1FA2"/>
+<circle cx="819.6" cy="100.6" r="2.5" fill="#7B1FA2"/>
+<circle cx="852.3" cy="90.8" r="2.5" fill="#7B1FA2"/>
+<circle cx="885.0" cy="81.1" r="2.5" fill="#7B1FA2"/>
+<line x1="35" y1="147" x2="49" y2="147" stroke="#1A73E8" stroke-width="2"/>
+<text x="53" y="150" font-family="Inter,sans-serif" font-size="8" fill="#6B7280">Ayoub</text>
+<line x1="155" y1="147" x2="169" y2="147" stroke="#F9AB00" stroke-width="2"/>
+<text x="173" y="150" font-family="Inter,sans-serif" font-size="8" fill="#6B7280">Chaymae</text>
+<line x1="275" y1="147" x2="289" y2="147" stroke="#1E8E3E" stroke-width="2"/>
+<text x="293" y="150" font-family="Inter,sans-serif" font-size="8" fill="#6B7280">Oumaima</text>
+<line x1="395" y1="147" x2="409" y2="147" stroke="#E53935" stroke-width="2"/>
+<text x="413" y="150" font-family="Inter,sans-serif" font-size="8" fill="#6B7280">Khalid</text>
+<line x1="515" y1="147" x2="529" y2="147" stroke="#7B1FA2" stroke-width="2"/>
+<text x="533" y="150" font-family="Inter,sans-serif" font-size="8" fill="#6B7280">Salma</text>
+</svg></div>
+</div>
+
+<!-- ═══ TYPOLOGIES ══════════════════════════════════════════════ -->
+<div class="page" id="pg-ty">
+  <div class="g2">
+    <div class="card"><div class="ct"><div class="bar bl"></div>Typologies BR — Al Hoceima (52 BR)</div><svg viewBox="0 0 460 209" style="width:100%;display:block;">
+<rect x="145" y="10" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="10" width="257.0" height="17" rx="3" fill="#1A73E8"/>
+<text x="138" y="22" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Panne en période d…</text>
+<text x="408" y="22" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">18</text>
+<rect x="145" y="34" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="34" width="242.7" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="46" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Dédommagement clie…</text>
+<text x="408" y="46" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">17</text>
+<rect x="145" y="58" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="58" width="85.7" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="70" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Commande expédiée …</text>
+<text x="408" y="70" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">6</text>
+<rect x="145" y="82" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="82" width="42.8" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="94" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Erreur de référence</text>
+<text x="408" y="94" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">3</text>
+<rect x="145" y="106" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="106" width="28.6" height="17" rx="3" fill="#7B1FA2"/>
+<text x="138" y="118" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Produit reçu en ab…</text>
+<text x="408" y="118" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">2</text>
+<rect x="145" y="130" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="130" width="28.6" height="17" rx="3" fill="#00BCD4"/>
+<text x="138" y="142" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Annulation de comm…</text>
+<text x="408" y="142" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">2</text>
+<rect x="145" y="154" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="154" width="28.6" height="17" rx="3" fill="#FF5722"/>
+<text x="138" y="166" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Panne au déballage…</text>
+<text x="408" y="166" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">2</text>
+<rect x="145" y="178" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="178" width="28.6" height="17" rx="3" fill="#607D8B"/>
+<text x="138" y="190" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Rétractation</text>
+<text x="408" y="190" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">2</text>
+</svg></div>
+    <div class="card"><div class="ct"><div class="bar ba"></div>Type de Commande — Al Hoceima</div><svg viewBox="0 0 460 137" style="width:100%;display:block;">
+<rect x="145" y="10" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="10" width="257.0" height="17" rx="3" fill="#1A73E8"/>
+<text x="138" y="22" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Marketplace</text>
+<text x="408" y="22" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">41</text>
+<rect x="145" y="34" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="34" width="81.5" height="17" rx="3" fill="#F9AB00"/>
+<text x="138" y="46" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Fulfilment</text>
+<text x="408" y="46" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">13</text>
+<rect x="145" y="58" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="58" width="81.5" height="17" rx="3" fill="#1E8E3E"/>
+<text x="138" y="70" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Cdiscount</text>
+<text x="408" y="70" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">13</text>
+<rect x="145" y="82" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="82" width="6.3" height="17" rx="3" fill="#E53935"/>
+<text x="138" y="94" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Abonnement CDAV</text>
+<text x="408" y="94" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">1</text>
+<rect x="145" y="106" width="257" height="17" rx="3" fill="#F3F4F6"/>
+<rect x="145" y="106" width="6.3" height="17" rx="3" fill="#7B1FA2"/>
+<text x="138" y="118" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="500">Nouvelle activité</text>
+<text x="408" y="118" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">1</text>
+</svg></div>
+  </div>
+  <div class="g2">
+    <div class="card"><div class="ct"><div class="bar bg"></div>Répartition Action ID — Al Hoceima</div><svg viewBox="0 0 440 120" style="width:100%;display:block;"><rect x="0" y="10" width="380" height="28" rx="4" fill="#E5393522"/><rect x="0" y="10" width="269" height="28" rx="4" fill="#E53935"/><text x="6" y="29" font-family="Inter,sans-serif" font-size="11" fill="#fff" font-weight="600">Gestion Exceptionnelle — 49</text><text x="386" y="29" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">71%</text><rect x="0" y="46" width="380" height="28" rx="4" fill="#1A73E822"/><rect x="0" y="46" width="110" height="28" rx="4" fill="#1A73E8"/><text x="6" y="65" font-family="Inter,sans-serif" font-size="11" fill="#fff" font-weight="600">Gestion par Anticipation — 20</text><text x="386" y="65" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="700">29%</text></svg></div>
+    <div class="card"><div class="ct"><div class="bar br2"></div>Montants Cumulés — Mars 2026</div>
+      <div class="sr"><div class="sl2">Total RBT (ALH + TET)</div><div class="sv2" style="color:#137333;">104,118.79 €</div></div>
+      <div class="sr"><div class="sl2">Total GC (ALH + TET)</div><div class="sv2" style="color:#E37400;">14,211.38 €</div></div>
+      <div class="sr"><div class="sl2">ALH — RBT</div><div class="sv2">4,442.12 €</div></div>
+      <div class="sr"><div class="sl2">ALH — GC</div><div class="sv2">642.98 €</div></div>
+      <div class="sr"><div class="sl2">TET — RBT</div><div class="sv2">99,676.67 €</div></div>
+      <div class="sr"><div class="sl2">TET — GC</div><div class="sv2">13,568.40 €</div></div>
+      <div class="sr"><div class="sl2">Moy. RBT / BR</div><div class="sv2">88.91 €</div></div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+const DAILY=[["01/03", "Ayoub Khouna", 42.0, 0, 0.0, null, null], ["02/03", "Ayoub Khouna", 45.0, 0, 0.0, 80.0, null], ["02/03", "Khalid KARROUCH", 49.0, 0, 0.0, null, null], ["02/03", "Oumaima LAMIRI", 40.0, 0, 0.0, null, null], ["02/03", "Salma KARMAN", 53.0, 0, 0.0, null, null], ["03/03", "Ayoub Khouna", 40.0, 0, 0.0, 78.0, 14.3], ["03/03", "Khalid KARROUCH", 42.0, 0, 0.0, 73.7, null], ["03/03", "Oumaima LAMIRI", 36.0, 0, 0.0, 81.2, null], ["03/03", "Salma KARMAN", 49.0, 0, 0.0, 69.8, null], ["04/03", "Ayoub Khouna", 35.0, 0, 0.0, 85.3, 8.3], ["04/03", "Khalid KARROUCH", 53.0, 0, 0.0, 69.7, 21.1], ["04/03", "Oumaima LAMIRI", 39.0, 0, 0.0, 79.3, 11.8], ["04/03", "Salma KARMAN", 49.0, 0, 0.0, 78.6, 18.8], ["05/03", "Ayoub Khouna", 51.0, 0, 0.0, 78.8, 5.7], ["05/03", "Khalid KARROUCH", 54.0, 0, 0.0, 68.3, 8.8], ["05/03", "Oumaima LAMIRI", 41.0, 0, 0.0, 63.3, 9.7], ["05/03", "Salma KARMAN", 59.0, 0, 0.0, 74.4, 8.3], ["06/03", "Ayoub Khouna", 40.0, 0, 0.0, 79.5, 16.1], ["06/03", "Khalid KARROUCH", 44.0, 0, 0.0, 74.5, 19.5], ["06/03", "Oumaima LAMIRI", 38.0, 0, 0.0, 63.0, 9.1], ["06/03", "Salma KARMAN", 48.0, 0, 0.0, 60.0, 11.9], ["07/03", "Khalid KARROUCH", 36.0, 0, 0.0, 70.6, 17.5], ["07/03", "Oumaima LAMIRI", 41.0, 0, 0.0, 90.3, 10.3], ["09/03", "Ayoub Khouna", 38.0, 0, 0.0, 78.8, 17.1], ["09/03", "Chaymae NFIHA", 47.0, 0, 0.0, null, null], ["09/03", "Khalid KARROUCH", 45.0, 0, 0.0, 65.5, 25.0], ["09/03", "Oumaima LAMIRI", 45.0, 0, 0.0, 71.9, 6.5], ["09/03", "Salma KARMAN", 49.0, 0, 0.0, 77.5, 11.3], ["10/03", "Ayoub Khouna", 43.0, 0, 0.0, 71.4, 14.0], ["10/03", "Chaymae NFIHA", 46.0, 0, 0.0, 73.7, null], ["10/03", "Khalid KARROUCH", 47.0, 0, 0.0, 59.5, 0.0], ["10/03", "Oumaima LAMIRI", 42.0, 0, 0.0, 86.5, 2.5], ["10/03", "Salma KARMAN", 48.0, 0, 0.0, 75.0, 11.4], ["11/03", "Ayoub Khouna", 42.0, 0, 0.0, 76.9, 16.7], ["11/03", "Chaymae NFIHA", 41.0, 0, 0.0, 83.8, 13.2], ["11/03", "Oumaima LAMIRI", 39.0, 0, 0.0, 91.7, 12.2], ["11/03", "Salma KARMAN", 54.0, 0, 0.0, 68.3, 17.8], ["12/03", "Ayoub Khouna", 51.0, 0, 0.0, 70.6, 17.1], ["12/03", "Chaymae NFIHA", 44.0, 0, 0.0, 68.8, 7.3], ["12/03", "Khalid KARROUCH", 36.0, 0, 0.0, 55.0, 20.7], ["12/03", "Salma KARMAN", 55.0, 0, 0.0, 74.5, 7.9], ["13/03", "Ayoub Khouna", 46.0, 0, 0.0, 80.4, 8.1], ["13/03", "Chaymae NFIHA", 41.0, 0, 0.0, 84.2, 6.2], ["13/03", "Khalid KARROUCH", 45.0, 0, 0.0, 58.1, 10.5], ["13/03", "Oumaima LAMIRI", 42.0, 0, 0.0, 77.4, 11.4], ["13/03", "Salma KARMAN", 47.0, 0, 0.0, 76.0, 8.9], ["14/03", "Oumaima LAMIRI", 40.0, 0, 0.0, 63.9, 8.8], ["15/03", "Ayoub Khouna", 46.0, 0, 0.0, 85.7, 13.3], ["15/03", "Chaymae NFIHA", 47.0, 0, 0.0, 71.4, 13.2], ["15/03", "Khalid KARROUCH", 50.0, 0, 0.0, 73.7, 19.4], ["15/03", "Salma KARMAN", 53.0, 0, 0.0, 89.7, 7.4], ["16/03", "Ayoub Khouna", 36.0, 0, 0.0, 86.8, 9.5], ["16/03", "Chaymae NFIHA", 44.0, 0, 0.0, 78.0, 13.2], ["16/03", "Khalid KARROUCH", 42.0, 0, 0.0, 62.2, 11.8], ["16/03", "Oumaima LAMIRI", 39.0, 0, 0.0, 86.7, 17.6], ["16/03", "Salma KARMAN", 44.0, 0, 0.0, 69.8, 7.1], ["17/03", "Ayoub Khouna", 47.0, 0, 0.0, 83.3, 10.0], ["17/03", "Chaymae NFIHA", 39.0, 0, 0.0, 75.7, 20.6], ["17/03", "Khalid KARROUCH", 43.0, 0, 0.0, 73.5, 14.3], ["17/03", "Oumaima LAMIRI", 36.0, 0, 0.0, 84.8, 0.0], ["17/03", "Salma KARMAN", 55.0, 0, 0.0, 80.0, 14.0], ["18/03", "Ayoub Khouna", 37.0, 0, 0.0, 75.6, null], ["18/03", "Chaymae NFIHA", 40.0, 0, 0.0, 67.9, null], ["18/03", "Khalid KARROUCH", 32.0, 0, 0.0, 70.0, null], ["18/03", "Oumaima LAMIRI", 39.0, 0, 0.0, 78.8, null], ["18/03", "Salma KARMAN", 53.0, 0, 0.0, 68.0, null], ["19/03", "Ayoub Khouna", 43.0, 0, 0.0, 76.5, 12.8], ["19/03", "Chaymae NFIHA", 41.0, 0, 0.0, 88.6, 15.6], ["19/03", "Khalid KARROUCH", 38.0, 0, 0.0, 82.8, 15.2], ["19/03", "Oumaima LAMIRI", 44.0, 0, 0.0, 93.3, 6.9], ["19/03", "Salma KARMAN", 45.0, 0, 0.0, 80.5, 5.7], ["20/03", "Ayoub Khouna", 28.0, 0, 0.0, 76.2, 19.4], ["20/03", "Chaymae NFIHA", 30.0, 0, 0.0, 70.3, 21.9], ["20/03", "Khalid KARROUCH", 31.0, 0, 0.0, 79.2, 4.2], ["20/03", "Oumaima LAMIRI", 28.0, 0, 0.0, 79.5, 12.5], ["20/03", "Salma KARMAN", 32.0, 0, 0.0, 61.5, 18.8], ["21/03", "Khalid KARROUCH", 31.0, 0, 0.0, 75.0, 4.2], ["21/03", "Oumaima LAMIRI", 41.0, 0, 0.0, 80.0, 15.4], ["23/03", "Ayoub Khouna", 34.0, 0, 0.0, 91.3, 16.7], ["23/03", "Chaymae NFIHA", 31.0, 0, 0.0, 71.4, 15.2], ["23/03", "Khalid KARROUCH", 31.0, 0, 0.0, 81.0, 0.0], ["23/03", "Oumaima LAMIRI", 33.0, 0, 0.0, 75.8, 14.8], ["23/03", "Salma KARMAN", 35.0, 0, 0.0, 76.9, 7.5], ["24/03", "Ayoub Khouna", 44.0, 0, 0.0, 71.0, 9.1], ["24/03", "Chaymae NFIHA", 35.0, 0, 0.0, 81.5, 8.3], ["24/03", "Khalid KARROUCH", 38.0, 0, 0.0, 69.0, 0.0], ["24/03", "Oumaima LAMIRI", 33.0, 0, 0.0, 75.0, 5.4], ["24/03", "Salma KARMAN", 39.0, 0, 0.0, 89.3, 14.8], ["25/03", "Ayoub Khouna", 3.0, 2, 66.7, 82.5, 15.6], ["25/03", "Chaymae NFIHA", 5.0, 1, 20.0, 75.9, 11.5], ["25/03", "Khalid KARROUCH", 3.0, 0, 0.0, 64.7, 10.7], ["25/03", "Oumaima LAMIRI", 5.0, 0, 0.0, 67.9, 9.1], ["25/03", "Salma KARMAN", 4.0, 1, 25.0, 64.5, 11.8], ["26/03", "Ayoub Khouna", 11.0, 2, 18.2, null, 9.1], ["26/03", "Chaymae NFIHA", 9.0, 2, 22.2, null, 15.4], ["26/03", "Khalid KARROUCH", 10.0, 0, 0.0, null, 17.6], ["26/03", "Oumaima LAMIRI", 12.0, 1, 8.3, null, 12.5], ["26/03", "Salma KARMAN", 12.0, 1, 8.3, null, 15.2], ["27/03", "Ayoub Khouna", 6.0, 2, 33.3, null, 0.0], ["27/03", "Chaymae NFIHA", 6.0, 1, 16.7, null, 0.0], ["27/03", "Khalid KARROUCH", 6.0, 1, 16.7, null, 0.0], ["27/03", "Oumaima LAMIRI", 7.0, 1, 14.3, null, 25.0], ["27/03", "Salma KARMAN", 6.0, 2, 33.3, null, 33.3], ["30/03", "Ayoub Khouna", 33.0, 5, 15.2, null, 11.1], ["30/03", "Chaymae NFIHA", 33.0, 7, 21.2, null, 27.3], ["30/03", "Khalid KARROUCH", 28.0, 7, 25.0, null, 20.0], ["30/03", "Oumaima LAMIRI", 28.0, 8, 28.6, null, 18.2], ["30/03", "Salma KARMAN", 36.0, 3, 8.3, null, 8.3], ["31/03", "Ayoub Khouna", 23.0, 3, 13.0, 84.4, 0.0], ["31/03", "Chaymae NFIHA", 22.0, 5, 22.7, 74.2, 16.7], ["31/03", "Khalid KARROUCH", 28.0, 1, 3.6, 66.7, 25.0], ["31/03", "Oumaima LAMIRI", 22.0, 9, 40.9, 77.8, 0.0], ["31/03", "Salma KARMAN", 29.0, 4, 13.8, 83.3, 0.0]];
+const DATES=["01/03", "02/03", "03/03", "04/03", "05/03", "06/03", "07/03", "09/03", "10/03", "11/03", "12/03", "13/03", "14/03", "15/03", "16/03", "17/03", "18/03", "19/03", "20/03", "21/03", "23/03", "24/03", "25/03", "26/03", "27/03", "30/03", "31/03"];
+const BRD=["30/03", "27/03", "25/03", "26/03", "31/03"];
+const AG_N=['Ayoub Khouna','Chaymae NFIHA','Oumaima LAMIRI','Khalid KARROUCH','Salma KARMAN'];
+const AG_C=['#1A73E8','#F9AB00','#1E8E3E','#E53935','#7B1FA2'];
+
+function goTo(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nav').forEach(n=>n.classList.remove('on'));
+  document.getElementById('pg-'+id).classList.add('on');
+  event.currentTarget.classList.add('on');
+  const t={ov:'Overview — Mars 2026',us:'Usage BR — Mars 2026',dj:'Vue Journalière — Al Hoceima',ty:'Typologies & Analyse'};
+  document.getElementById('tb-t').textContent=t[id]||'';
+}
+
+function pp(v,type){
+  if(v===null||v===undefined) return '<span class="pn">N/D</span>';
+  if(type==='s') return '<span class="pill '+(v>=78?'pg':v>=70?'py':'pr')+'">'+v+'%</span>';
+  if(type==='r') return '<span class="pill '+(v<=10?'pg':v<=13?'py':'pr')+'">'+v+'%</span>';
+  if(type==='u') return '<span class="pill '+(v<=2?'pg':v<=15?'py':'pr')+'">'+v+'%</span>';
+  return v;
+}
+
+function selDay(d){
+  DATES.forEach(function(dt){
+    var b=document.getElementById('db_'+dt.replace(/\//g,'_'));
+    if(!b) return;
+    var hbr=BRD.indexOf(dt)>-1;
+    b.className='date-btn'+(hbr?' br-day':'')+(dt===d?' act':'');
+  });
+  var rows=DAILY.filter(r=>r[0]===d);
+  document.getElementById('dj-t').textContent='Agents — '+d+' mars 2026';
+  var tA=0,tB=0,sU=0,sS=[],sR=[];
+  rows.forEach(r=>{tA+=r[2];tB+=r[3];sU+=r[4]||0;if(r[5]!=null)sS.push(r[5]);if(r[6]!=null)sR.push(r[6]);});
+  document.getElementById('dk1').textContent=tA;
+  document.getElementById('dk2').textContent=tB;
+  document.getElementById('dk3').textContent=(sU/rows.length).toFixed(1)+'%';
+  document.getElementById('dk4').textContent=sS.length?(sS.reduce((a,b)=>a+b,0)/sS.length).toFixed(1)+'%':'N/D';
+  document.getElementById('dk5').textContent=sR.length?(sR.reduce((a,b)=>a+b,0)/sR.length).toFixed(1)+'%':'N/D';
+  var maxA=Math.max(...rows.map(r=>r[2]),1);
+  var h='';
+  [...rows].sort((a,b)=>b[2]-a[2]).forEach(r=>{
+    var c=AG_C[AG_N.indexOf(r[1])]||'#6B7280';
+    h+='<tr><td><div style="display:flex;align-items:center;gap:7px;"><div style="width:8px;height:8px;border-radius:50%;background:'+c+';flex-shrink:0;"></div><span style="font-weight:600;">'+r[1]+'</span></div></td>'
+      +'<td class="r">'+r[2]+'</td>'
+      +'<td class="r" style="font-weight:700;color:'+(r[3]>0?'#C5221F':'#9AA0AC')+';">'+r[3]+'</td>'
+      +'<td class="r">'+pp(r[4],'u')+'</td>'
+      +'<td class="r">'+pp(r[5],'s')+'</td>'
+      +'<td class="r">'+pp(r[6],'r')+'</td></tr>';
+  });
+  document.getElementById('dj-b').innerHTML=h||'<tr><td colspan="6" style="text-align:center;padding:18px;color:#9AA0AC;">Aucune donnée</td></tr>';
+  var bH=24,gap=6,H=rows.length*(bH+gap)+16;
+  var svg='<svg viewBox="0 0 440 '+H+'" style="width:100%;display:block;">';
+  [...rows].sort((a,b)=>b[2]-a[2]).forEach((r,i)=>{
+    var c=AG_C[AG_N.indexOf(r[1])]||'#1A73E8';
+    var y=8+i*(bH+gap);
+    var bw=(r[2]/maxA)*270;
+    svg+='<rect x="0" y="'+y+'" width="270" height="'+bH+'" rx="3" fill="#F3F4F6"/>';
+    svg+='<rect x="0" y="'+y+'" width="'+bw.toFixed(1)+'" height="'+bH+'" rx="3" fill="'+c+'" fill-opacity=".85"/>';
+    svg+='<text x="'+Math.min(bw+6,276)+'" y="'+(y+bH/2+4.5)+'" font-family="Inter,sans-serif" font-size="11" fill="#374151" font-weight="600">'+r[1].split(' ')[0]+' — '+r[2]+' app</text>';
+    if(r[3]>0) svg+='<text x="435" y="'+(y+bH/2+4.5)+'" text-anchor="end" font-family="Inter,sans-serif" font-size="11" fill="#C5221F" font-weight="700">🔴 '+r[3]+' BR</text>';
+  });
+  svg+='</svg>';
+  document.getElementById('dj-g').innerHTML=svg;
+}
+
+window.onload=function(){
+  var lastBR=null;
+  DATES.forEach(function(d){if(BRD.indexOf(d)>-1) lastBR=d;});
+  if(lastBR) selDay(lastBR);
+  else if(DATES.length) selDay(DATES[DATES.length-1]);
+};
+</script>
+</body>
+</html>
