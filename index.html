@@ -1,83 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<script>
-(function(){
-  var PWD = 'Myopla2026';
-  var KEY = 'br_token';
-
-  function isValid(){
-    var t = localStorage.getItem(KEY);
-    if(!t) return false;
-    return t === btoa(PWD + '|' + new Date().toDateString());
-  }
-
-  if(isValid()) return; // Already logged in today
-
-  // Hide everything
-  document.write('<style>body,html{display:none!important}</style>');
-
-  window.addEventListener('load', function(){
-    document.body.innerHTML = '';
-    document.documentElement.style.cssText = 'display:block';
-    document.body.style.cssText = 'display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:linear-gradient(135deg,#1C1C2E,#2d3a5c);font-family:Inter,system-ui,sans-serif;';
-
-    document.body.innerHTML = `
-      <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
-        #login-box{background:#fff;border-radius:16px;padding:40px 36px;width:360px;box-shadow:0 20px 60px rgba(0,0,0,.5);text-align:center;}
-        #login-box input{width:100%;padding:12px 44px 12px 16px;border:2px solid #E8EAED;border-radius:10px;font-size:14px;font-family:Inter,sans-serif;outline:none;color:#1C1C2E;box-sizing:border-box;}
-        #login-box input:focus{border-color:#1A73E8;}
-        #login-btn{width:100%;padding:13px;background:#1A73E8;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:Inter,sans-serif;margin-top:8px;}
-        #login-btn:hover{background:#1557B0;}
-        #err{color:#C5221F;font-size:12px;font-weight:500;min-height:20px;margin:8px 0;}
-      </style>
-      <div id="login-box">
-        <div style="width:60px;height:60px;background:#E53935;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:22px;font-weight:900;color:#fff;font-family:Inter,sans-serif;">BR</div>
-        <h1 style="font-size:18px;font-weight:800;color:#1C1C2E;margin:0 0 4px;">Dashboard Bacs Rouges</h1>
-        <p style="font-size:12px;color:#9AA0AC;margin:0 0 24px;">Myopla · Accès restreint</p>
-        <div style="position:relative;">
-          <input type="password" id="pwd" placeholder="Mot de passe" />
-          <span id="eye" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:16px;color:#9AA0AC;">👁</span>
-        </div>
-        <div id="err"></div>
-        <button id="login-btn">Se connecter</button>
-        <p style="font-size:10px;color:#C5C5C5;margin:20px 0 0;">© Myopla · POC Bacs Rouges 2026</p>
-      </div>`;
-
-    document.getElementById('eye').onclick = function(){
-      var i = document.getElementById('pwd');
-      i.type = i.type === 'password' ? 'text' : 'password';
-    };
-
-    function doLogin(){
-      var val = document.getElementById('pwd').value;
-      if(val === PWD){
-        localStorage.setItem(KEY, btoa(PWD + '|' + new Date().toDateString()));
-        location.reload();
-      } else {
-        document.getElementById('err').textContent = '❌ Mot de passe incorrect. Réessayez.';
-        document.getElementById('pwd').value = '';
-        document.getElementById('pwd').focus();
-        document.getElementById('login-box').style.animation = 'shake .3s ease';
-        setTimeout(function(){ document.getElementById('login-box').style.animation=''; }, 300);
-      }
-    }
-
-    document.getElementById('login-btn').onclick = doLogin;
-    document.getElementById('pwd').onkeydown = function(e){ if(e.key==='Enter') doLogin(); };
-    document.getElementById('pwd').focus();
-  });
-
-  window.brLogout = function(){
-    localStorage.removeItem(KEY);
-    location.reload();
-  };
-})();
-</script>
-
-
 <meta charset="UTF-8">
 <title>Bacs Rouges — Myopla — Avril 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1001,6 +924,102 @@ window.onload=function(){
   if(lastBR) selDay(lastBR);
   else if(DATES.length) selDay(DATES[DATES.length-1]);
 };
+</script>
+<style>
+#login-overlay{
+  position:fixed;inset:0;z-index:99999;
+  background:linear-gradient(135deg,#1C1C2E,#2d3a5c);
+  display:flex;align-items:center;justify-content:center;
+  font-family:Inter,system-ui,sans-serif;
+}
+#login-box{
+  background:#fff;border-radius:16px;padding:40px 36px;
+  width:360px;text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+#pwd-field{
+  width:100%;padding:12px 44px 12px 16px;
+  border:2px solid #E8EAED;border-radius:10px;
+  font-size:14px;font-family:Inter,sans-serif;
+  outline:none;color:#1C1C2E;box-sizing:border-box;
+}
+#pwd-field:focus{border-color:#1A73E8;}
+#login-btn{
+  width:100%;padding:13px;margin-top:8px;
+  background:#1A73E8;color:#fff;border:none;
+  border-radius:10px;font-size:14px;font-weight:700;
+  cursor:pointer;font-family:Inter,sans-serif;
+}
+#login-btn:hover{background:#1557B0;}
+#login-err{color:#C5221F;font-size:12px;font-weight:500;min-height:20px;margin:8px 0 0;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+</style>
+
+<div id="login-overlay">
+  <div id="login-box">
+    <div style="width:60px;height:60px;background:#E53935;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:22px;font-weight:900;color:#fff;">BR</div>
+    <h1 style="font-size:18px;font-weight:800;color:#1C1C2E;margin:0 0 4px;">Dashboard Bacs Rouges</h1>
+    <p style="font-size:12px;color:#9AA0AC;margin:0 0 24px;">Myopla · Accès restreint</p>
+    <div style="position:relative;">
+      <input type="password" id="pwd-field" placeholder="Mot de passe" />
+      <span id="eye-btn" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:16px;color:#9AA0AC;">👁</span>
+    </div>
+    <div id="login-err"></div>
+    <button id="login-btn">Se connecter</button>
+    <p style="font-size:10px;color:#C5C5C5;margin:20px 0 0;">© Myopla · POC Bacs Rouges 2026</p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var PWD = 'Myopla2026';
+  var KEY = 'br_ok';
+
+  function isValid(){
+    return localStorage.getItem(KEY) === btoa(PWD + new Date().toDateString());
+  }
+
+  var overlay = document.getElementById('login-overlay');
+
+  // Already authenticated today - hide overlay immediately
+  if(isValid()){
+    overlay.style.display = 'none';
+    return;
+  }
+
+  // Setup login form
+  document.getElementById('eye-btn').addEventListener('click', function(){
+    var f = document.getElementById('pwd-field');
+    f.type = f.type === 'password' ? 'text' : 'password';
+  });
+
+  function doLogin(){
+    var val = document.getElementById('pwd-field').value;
+    var err = document.getElementById('login-err');
+    if(val === PWD){
+      localStorage.setItem(KEY, btoa(PWD + new Date().toDateString()));
+      overlay.style.display = 'none';
+    } else {
+      err.textContent = '❌ Mot de passe incorrect. Réessayez.';
+      document.getElementById('pwd-field').value = '';
+      document.getElementById('login-box').style.animation = 'shake 0.3s ease';
+      setTimeout(function(){ 
+        document.getElementById('login-box').style.animation = ''; 
+      }, 300);
+    }
+  }
+
+  document.getElementById('login-btn').addEventListener('click', doLogin);
+  document.getElementById('pwd-field').addEventListener('keydown', function(e){
+    if(e.key === 'Enter') doLogin();
+  });
+
+  // Logout function
+  window.brLogout = function(){
+    localStorage.removeItem(KEY);
+    location.reload();
+  };
+})();
 </script>
 </body>
 </html>
